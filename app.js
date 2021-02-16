@@ -3,9 +3,15 @@ const app = express();
 const port = 3003;
 const middleware = require('./middleware');
 const path = require("path");
-const bodyParser = require("body-parser")
-
-
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+mongoose.connect("mongodb+srv://admin:dbpassword@twitterclone1cluster.oaevp.mongodb.net/TwitterCloneDB?retryWrites=true&w=majority", {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true })
+.then(() => {
+    console.log("database connection successful");
+})
+.catch((err) => {
+    console.log("database connection errorrrr " + err);
+})
 const server = app.listen(port, () => console.log("Server listening on port " + port));
 
 app.set("view engine", "pug");
